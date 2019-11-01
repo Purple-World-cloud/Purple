@@ -1,0 +1,48 @@
+
+<%= link_to "", conversations_path(@conversation), class: "fa fa-refresh fa-spin fa-3x fa-fw" %>
+<div class="col-xs-12">
+	<h8>
+	
+ <%= @conversation.recipient.username %>
+</h8>
+</div>
+
+<% if @over_ten %>
+ <%= link_to "Show Previous", '?m=all', class: 'button is-link' %>
+<% end %>
+
+<div class="segment">
+ <% @messages.each do |message| %>
+  <% if message.body %>
+   <% account = Account.find(message.account_id) %>
+   <div class="item">
+    <div class="col-xs-12">
+     <%= link_to image_tag(account.image.url, class: "rounded"), show_path(account.username) if account.image.present? %> <p class="message">
+		 <%= message.body %>
+		 </p> 
+		 
+      <div class="list">
+       <div class="item">
+        <i class="right triangle icon"></i>
+		   <p class="text">
+			   <%= message.message_time %> 
+		   </p>
+      
+      
+    </div>
+   </div>
+ </div>
+ <% end %>
+<% end %>
+</div>
+<div class="col-xs-12">
+	<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+ <div class="field">
+   <%= f.text_area :body, class: "form-control" %>
+ </div>
+ <%= f.text_field :account_id, value: current_account.id, type: "hidden" %>
+ <div>
+   <%= f.submit "Send", class: "btn btn-success" %>
+ </div>
+<% end %>
+	</div>

@@ -1,0 +1,41 @@
+<div class="columnss">
+<div class="col-xs-6">
+
+<h7>
+<img class="man" src="/man.png">
+</h7>
+<% @accounts.each do |account| %>
+<% if account.id != current_account.id %>
+<div class="name">
+   <%= link_to image_tag(account.image.url, class: "rounded"), show_path(account.username) if account.image.present? %> <%= account.username %>   <%= link_to "", conversations_path(sender_id: current_account.id, recipient_id: account.id), method: :post, class: "fa fa-envelope faa-horizontal animated fa-2x" %>
+</div>
+<% end %>
+<% end %>
+</div>
+
+<div class="columnss">
+
+<h7>
+Conversations</h7>
+<div class="namee">
+	<%= @conversations.each do |conversation| %>
+	<% if conversation.sender_id == current_account.id || conversation.recipient_id == current_account.id %>
+	<% if conversation.sender_id == current_account.id %>
+	<% recipient = Account.find(conversation.recipient_id) %>
+	<% else %>
+	<% recipient = Account.find(conversation.sender_id) %>
+	<% end %>
+	<% unless current_account.id == recipient %>
+	<div class="columns">
+	<div class="column">
+<div class="col-xs-4.5">
+	<div class="inline-block"> <%= link_to image_tag(recipient.image.url, class: "rounded"), show_path(recipient.username) if recipient.image.present? %><br> <%= link_to recipient.username, conversation_messages_path(conversation), class: "name-name" %> </div> 
+	</div>
+	<</div>
+	<% end %>
+	<% end %>
+	<% end %>
+	</div>
+</div>
+</div>
+</div>

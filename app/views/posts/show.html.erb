@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+<div class="container">
+<div class="row">
+<div class="col-6">
+
+<div class="insta-post">
+<%= image_tag @post.image.url, width:"360px", class: "img img-fluid" if @post.image.present? %>
+
+<div class= "post-details">
+
+
+	
+<div class="post-metal">
+<%= link_to image_tag(@post.account.image.url, class: "img-roundd"), show_path(@post.account.username) %>
+<%= link_to @post.account.username, show_path(@post.account.username), class: "text-black" %>
+
+</div>
+
+<div class="comments-feed">
+<%= render "posts/comments", post: @post %>
+</div>
+<div class="comment-box"> 
+
+<%= form_for @comment do |f| %>
+<%= f.hidden_field :post_id, value: @post.id %>
+<div class="input-group">
+     <%= f.text_field :comment, placeholder: "Shoot comments here...", class: "form-control" %>
+      <span class="input-group-btn">
+        <%= f.submit "Shoot", class: "btn btn-default float-left" %>
+      </span>
+    </div>
+
+
+<% end %>
+</div>
+
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>

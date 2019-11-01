@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+<div class="container">
+<div class="row">
+<div class="col-6">
+<%  @posts.each do |post| %>
+<div class="insta-post">
+<div class="post-meta">
+<%= link_to image_tag(post.account.image.url, class: "img-rounded"), show_path(post.account.username) if post.account.image.present? %>
+<%= link_to post.account.username, show_path(post.account.username), class: "text-black" %>
+</div>
+<%= link_to post_path(post.id) do %>
+<%= image_tag post.image.url, width:"360px", class: "img img-fluid" %>
+<% end %>
+
+<div class= "post-details">
+
+<div class="post-actions">
+
+
+<%= link_to post_path(post.id), class: "fa fa-2x fa-animation fa-comments fa-animation-comments" do %>
+
+<% end %>
+</div>
+
+
+
+
+
+<strong><%= link_to post.account.username, show_path(post.account.username), class: "text-black" %></strong>
+<p class="w3-tangerine"><%= post.description %><p>
+
+<p class="text-muted"><%= time_ago_in_words post.created_at %> ago<p>
+
+
+</div>
+</div>
+<% end %>
+</div>
+
+</div>
+</div>
+
+<a href="/posts/new" class="float">
+<i class="fa fa-plus my-float"></i>
+</a>

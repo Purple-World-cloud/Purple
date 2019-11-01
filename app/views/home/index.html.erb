@@ -1,0 +1,23 @@
+ <% if account_signed_in? %>
+<div class="pass">
+Hanging
+</div>
+  	 <center><%= link_to "", feed_path, class: "fa fa-linux faa-tada animated fa-5x" %></center>
+	<% else %>
+<div class="container"
+
+<hp></p>
+<h1>Welcome To Purple World </h1>
+
+<h2>Please register or signup to continue </h2>
+
+<center>
+
+<%= link_to "Sign Up", new_account_registration_path, class: "btn btn-success" %>
+<%= link_to "Sign In", new_account_session_path, class: "btn btn-warning" %>
+
+</center>
+</div>
+	<% end %>
+
+

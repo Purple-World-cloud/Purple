@@ -1,0 +1,22 @@
+
+<%= form_for @post,  html: { multipart: true } do |f| %>
+<div class= "center">
+
+<div class= "col-4">
+<h3><%= f.label :caption, class: "form_control" %></h3>
+<%= f.text_area :description, class: "form-control" %>
+
+<h3><%= f.label :add_image, class: "form_control" %></h3>
+<%= f.file_field :image,  class: "form-control"%>
+<%= f.hidden_field :image_cache,  class: "form-control" %>
+
+<br />
+<%= f.submit "Post", class: "btn btn-danger" %>
+
+
+</div>
+</div>
+
+
+<% end %>
+
