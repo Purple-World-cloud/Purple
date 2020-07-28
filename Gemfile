@@ -6,7 +6,7 @@ gem 'rails_12factor', group: :production
 gem 'mailboxer', '~> 0.15.1'
 gem 'acts_as_votable'
 gem "cancan"
-gem 'json', '~> 1.8', '>= 1.8.3'
+gem 'json', '~> 2.3'
 gem 'font-awesome-sass', '~> 4.4.0'
 gem 'jquery-rails'
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
