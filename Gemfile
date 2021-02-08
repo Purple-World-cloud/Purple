@@ -21,7 +21,7 @@ gem "fog-google", require: "fog/rackspace/storage"
 gem "google-api-client", "> 0.8.5", "< 0.9"
 gem "mime-types"
 #gem "fog-aws"
-gem 'carrierwave', "0.10.0"
+gem 'carrierwave', "1.3.2"
 gem 'fog','~> 1.37.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
